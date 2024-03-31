@@ -434,7 +434,7 @@ function EditInfoDialog() {
           <span className="font-bold capitalize">edit payment information</span>
         </DialogTitle>
         <DialogContent>
-          <div className="flex-col">
+          <div className="flex-col gap-1">
             <p>
               Name: <span className="font-medium">Đinh Lê Dũng</span>
             </p>
@@ -496,7 +496,7 @@ function DeleteDialog() {
             Do you wish to <span className="text-wrong">delete</span> this
             player?
           </p>
-          <div className="flex-col">
+          <div className="flex-col gap-1">
             <p>
               Name: <span className="font-medium">Đinh Lê Dũng</span>
             </p>
