@@ -15,6 +15,7 @@ import {
   Autocomplete,
   Button,
   Checkbox,
+  FormControlLabel,
   IconButton,
   TableFooter,
   TextField,
@@ -108,10 +109,27 @@ function FilterMenu() {
         onClose={handleClose}
       >
         <div className="flex flex-col">
-          <div className="flex gap-2">
+          <div className="flex gap-1 mx-1">
             <Checkbox />
             <TextField
-              sx={{ m: 1, minWidth: 120 }}
+              sx={{ m: 1, minWidth: 160 }}
+              select // tell TextField to render select
+              label="Paid this month"
+              className="text-start"
+              size="small"
+            >
+              <MenuItem key={1} value="male">
+                Paid
+              </MenuItem>
+              <MenuItem key={2} value="female">
+                Not pay
+              </MenuItem>
+            </TextField>
+          </div>
+          <div className="flex gap-1 mx-1">
+            <Checkbox />
+            <TextField
+              sx={{ m: 1, minWidth: 160 }}
               select // tell TextField to render select
               label="Gender"
               className="text-start"
@@ -125,10 +143,10 @@ function FilterMenu() {
               </MenuItem>
             </TextField>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-1 mx-1">
             <Checkbox />
             <TextField
-              sx={{ m: 1, minWidth: 120 }}
+              sx={{ m: 1, minWidth: 160 }}
               select // tell TextField to render select
               label="Potential"
               className="text-start"
@@ -188,10 +206,7 @@ export default function App() {
         <div className="ml-auto flex items-center gap-2">
           <FilterMenu />
 
-          <Button variant="outlined" className="ml-auto">
-            <FilePlus className="w-4 h-4 mr-2" />
-            Add
-          </Button>
+          <AddPlayerDialog />
         </div>
       </div>
       <UserTable />
@@ -254,7 +269,7 @@ function UserTable() {
                       </TableCell>
                     ))}
                   <TableCell padding="checkbox" align="center">
-                    <EditInfo />
+                    <EditInfoDialog />
                   </TableCell>
                   <TableCell padding="checkbox" align="center">
                     <DeleteDialog />
@@ -295,7 +310,104 @@ function SummaryRow() {
   );
 }
 
-function EditInfo() {
+function AddPlayerDialog() {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <React.Fragment>
+      <Button
+        variant="outlined"
+        className="ml-auto"
+        aria-label="delete"
+        onClick={handleClickOpen}
+      >
+        <FilePlus className="w-4 h-4 mr-2" />
+        Add
+      </Button>
+
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        maxWidth="sm"
+        fullWidth={true}
+      >
+        <DialogTitle id="alert-dialog-title">
+          <span className="font-bold capitalize">add player</span>
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Please fill in player information below!
+          </DialogContentText>
+          <TextField
+            autoFocus
+            required
+            margin="dense"
+            id="name"
+            name="email"
+            label="Full name"
+            type="text"
+            fullWidth
+            variant="standard"
+          />
+          <div className="flex mt-5 gap-8">
+            <div className="basis-1/2">
+              <TextField
+                sx={{ minWidth: 200 }}
+                select // tell TextField to render select
+                label="Gender"
+                className="text-start w-full"
+                size="small"
+              >
+                <MenuItem key={1} value="male">
+                  Male
+                </MenuItem>
+                <MenuItem key={2} value="female">
+                  Female
+                </MenuItem>
+              </TextField>
+            </div>
+            <div className="basis-1/2">
+              <TextField
+                sx={{ minWidth: 200 }}
+                select // tell TextField to render select
+                label="Potential"
+                className="text-start w-full"
+                size="small"
+              >
+                <MenuItem key={1} value="yes">
+                  Yes
+                </MenuItem>
+                <MenuItem key={2} value="no">
+                  No
+                </MenuItem>
+              </TextField>
+            </div>
+          </div>
+        </DialogContent>
+        <DialogActions>
+          <Button color="error" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button onClick={handleClose} autoFocus>
+            Add
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </React.Fragment>
+  );
+}
+
+function EditInfoDialog() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
