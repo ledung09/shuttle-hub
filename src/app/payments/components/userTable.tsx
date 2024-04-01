@@ -6,7 +6,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { CircleCheckBig } from "lucide-react";
-import { Gender } from "../../types/interface";
+import { Gender } from "../../../types/interface";
 import { DeleteDialog, EditInfoDialog } from "./subDialog";
 
 function createData(

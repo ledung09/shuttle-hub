@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -10,18 +10,30 @@ import Button from "@mui/material/Button";
 import Slide from "@mui/material/Slide";
 import { Aperture } from "lucide-react";
 
-const navItems = ["Home", "About", "Contact"];
+const navItems = [
+  {
+    label: "Home",
+    route: "/",
+  },
+  {
+    label: "Payments",
+    route: "/payments",
+  },
+  {
+    label: "Home",
+    route: "/",
+  },
+  {
+    label: "Home",
+    route: "/",
+  },
+];
 
-interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
+
+function HideOnScroll(props:  {
   window?: () => Window;
   children: React.ReactElement;
-}
-
-function HideOnScroll(props: Props) {
+}) {
   const { children, window } = props;
   const trigger = useScrollTrigger({
     target: window ? window() : undefined,
@@ -41,17 +53,21 @@ export default function HomeLayout() {
       <HideOnScroll>
         <AppBar>
           <Toolbar>
-            <Aperture className="text-white mr-2 " />
-            <Typography variant="h6" component="div">
-              SHUTTLE HUB
-            </Typography>
+            <div className="flex items-center select-none">
+              <Aperture className="text-white mr-2 " />
+              <Typography variant="h6" component="div">
+                SHUTTLE HUB
+              </Typography>
+            </div>
             <Box
               sx={{ display: { xs: "none", sm: "block" }, marginLeft: "auto" }}
             >
               {navItems.map((item) => (
-                <Button key={item} sx={{ color: "#fff" }}>
-                  {item}
-                </Button>
+                <Link to={item.route}>
+                  <Button key={item.label} sx={{ color: "#fff" }}>
+                    {item.label}
+                  </Button>
+                </Link>
               ))}
             </Box>
           </Toolbar>
