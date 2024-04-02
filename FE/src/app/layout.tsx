@@ -19,18 +19,9 @@ const navItems = [
     label: "Payments",
     route: "/payments",
   },
-  {
-    label: "Home",
-    route: "/",
-  },
-  {
-    label: "Home",
-    route: "/",
-  },
 ];
 
-
-function HideOnScroll(props:  {
+function HideOnScroll(props: {
   window?: () => Window;
   children: React.ReactElement;
 }) {

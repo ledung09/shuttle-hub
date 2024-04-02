@@ -126,20 +126,33 @@ export function LineChartHome() {
           <ComposedChart width={500} height={400} data={data}>
             <CartesianGrid stroke="#f5f5f5" />
             <XAxis dataKey="name" />
-            <YAxis yAxisId="line" orientation="left" stroke="#8884d8" />
-            <YAxis yAxisId="bar" orientation="right" stroke="#82ca9d" />
+            <YAxis
+              yAxisId="line"
+              orientation="right"
+              stroke="#ff7300"
+              strokeWidth={1.5}
+            />
+            <YAxis
+              strokeWidth={1.5}
+              yAxisId="bar"
+              orientation="left"
+              stroke="rgb(25, 118, 210)"
+            />
             <Tooltip content={<CustomTooltip />} />
             <Legend verticalAlign="top" height={36} />
-            <Brush dataKey="name" height={30} stroke="#8884d8" />
+            <Brush dataKey="name" height={30} stroke="rgb(25, 118, 210)" />
 
             <Bar
               name="New players"
               yAxisId="bar"
               dataKey="pv"
               barSize={20}
-              fill="#413ea0"
+              fill="rgb(25, 118, 210)"
+              radius={[5, 5, 0, 0]}
             />
             <Line
+              activeDot={{ r: 8 }}
+              strokeWidth={2}
               yAxisId="line"
               name="Total revenue (thousand VND) "
               type="monotone"

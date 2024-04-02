@@ -38,9 +38,15 @@ export function TopPlayerCard() {
             <TableHead>
               <TableRow>
                 <TableCell>Name</TableCell>
-                <TableCell align="center">Gender</TableCell>
-                <TableCell align="center">Potential</TableCell>
-                <TableCell align="center">Month Paid</TableCell>
+                <TableCell align="center" padding="none">
+                  Gender
+                </TableCell>
+                <TableCell align="center" padding="none">
+                  Potential
+                </TableCell>
+                <TableCell align="center" padding="none">
+                  Month Paid
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

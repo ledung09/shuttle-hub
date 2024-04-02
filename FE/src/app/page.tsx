@@ -40,10 +40,10 @@ export default function HomePage() {
         />
       </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7 mt-6">
-        <div className="col-span-4">
+        <div className="col-span-4 w-full">
           <LineChartHome />
         </div>
-        <div className="col-span-3">
+        <div className="col-span-3  w-full">
           <TopPlayerCard />
         </div>
       </div>
