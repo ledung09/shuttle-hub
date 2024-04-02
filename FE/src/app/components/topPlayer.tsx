@@ -32,7 +32,7 @@ export function TopPlayerCard() {
   return (
     <Card className="border rounded-md h-full">
       <CardContent>
-        <p className="font-bold text-lg mb-2">Top active players</p>
+        <p className="font-bold text-xl mb-2">Top active players</p>
         <TableContainer sx={{ maxHeight: 320 }}>
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
